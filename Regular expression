@@ -1,0 +1,12 @@
+https://regex101.com/
+
+
+design_code_data_files_2019-05-18__14-20-06.tgz
+
+patern = re.compile(r'\d\d\d\d-\d\d-\d\d__\d\d-\d\d-\d\d)  https://www.youtube.com/watch?v=K8L6KVGG-7o
+
+
+\d+|-|__
+
+
+
