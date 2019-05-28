@@ -1,20 +1,40 @@
 import os
-#import sys
-#import re
+from datetime import datetime
 
 full_list = []
 selected_list = []
+sorted_list = []
+N = 2 # Количество первых бакапов в списке которые оставляем!
 
 def main():
-    directory = "/home/denis/2/" # Откуда удалять.
+    directory = "/home/denis/test/2" # Откуда удалять.
     all_elements = os.listdir( directory ) # Список всех элиментов в папке.
     full_list = all_elements
+    print('Список всех элиментов.')
     print(full_list,end='\n\n')
 
     for i in full_list:
-        #selected_list.append(i[23:33] + i[35:43]) # Вытаскиваем дату и время в новый список! 
         selected_list.append(i[23:27] + i[28:30] + i[31:33] + i[35:37] + i[38:40] + i[41:43])
-    print ('Отсортированный список - {}'.format(selected_list))
+    print ('Выделили только дату и время из имен файлов!')
+    print(selected_list,end='\n\n')
+    print ('Выбранные элименты сортируем по дате!')
+    selected_list.sort(key=lambda date: datetime.strptime(date, "%Y%m%d%H%M%S"))
+    print(selected_list,end='\n\n')
+    sorted_list = selected_list
+    sorted_list = sorted(selected_list, reverse = True) # Делаем обратную сортировку!
+    print ('Список в ктором последняя дата на первом месте!')
+    print(sorted_list,end='\n\n')
+    #files_to_delete = sorted(sorted_list)[:N]
+    #files_to_live = sorted(sorted_list)[N:]
+    files_to_delete = sorted_list[:-N]
+    files_to_live = sorted_list[-N:]
+    print('Список который останется!')
+    print(files_to_live,end='\n\n')
+
+
+    for i in files_to_delete:
+        print('Удаляем -{}'.format(i))
+
 
 
 if (__name__ == "__main__"):
