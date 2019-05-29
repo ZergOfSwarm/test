@@ -24,10 +24,8 @@ def main():
     sorted_list = sorted(selected_list, reverse = True) # Делаем обратную сортировку!
     print ('Список в ктором последняя дата на первом месте!')
     print(sorted_list,end='\n\n')
-    #files_to_delete = sorted(sorted_list)[:N]
-    #files_to_live = sorted(sorted_list)[N:]
-    files_to_delete = sorted_list[:-N]
-    files_to_live = sorted_list[-N:]
+    files_to_delete = sorted_list[N:] # Делаем срез, что бы оставить нужное количество файлов!
+    files_to_live = sorted_list[:N] # Делаем срез, что бы удалить оставшиеся количество файлов!
     print('Список который останется!')
     print(files_to_live,end='\n\n')
 
