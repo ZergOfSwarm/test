@@ -4,7 +4,7 @@ from datetime import datetime
 full_list = []
 selected_list = []
 sorted_list = []
-N = 2 # Количество первых бакапов в списке которые оставляем!
+N = 3 # Количество первых бакапов в списке которые оставляем!
 
 def main():
     directory = "/home/denis/test/2" # Откуда удалять.
@@ -25,13 +25,19 @@ def main():
     print ('Список в ктором последняя дата на первом месте!')
     print(sorted_list,end='\n\n')
     files_to_delete = sorted_list[N:] # Делаем срез, что бы оставить нужное количество файлов!
+    print ('Список который будет удален -{}'.format(files_to_delete))
     files_to_live = sorted_list[:N] # Делаем срез, что бы удалить оставшиеся количество файлов!
     print('Список который останется!')
     print(files_to_live,end='\n\n')
 
 
-    for i in files_to_delete:
-        print('Удаляем -{}'.format(i))
+    for file in files_to_delete: # Перебираем весь список.
+        #i = directory + file  # путь + имя файла
+        #if os.path.isfile(i):
+            #os.remove(i) # Удалем!
+        print('Удалили -{}'.format(file)) # Выписываем все элименты которые бедут удалены.
+        os.remove(file) # Удалем!
+
 
 
 
