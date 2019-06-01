@@ -1,5 +1,5 @@
 import os
-import sys
+#import sys
 import re
 #import shutil
 
@@ -9,7 +9,7 @@ delete_list = []
 
 def main():
     #print('Hello, Denis! Below is a list according to your search criteria! \n------------------\n')
-    directory = "/var/www/html/cms/saverestore/" # Откуда удалять.
+    directory = "/home/denis/test/2/" # Откуда удалять.
     all_elements = os.listdir( directory ) # Список всех элиментов в папке.
     full_list = all_elements
     selection_criteria = re.compile("design_code_data_files*.*")  # Сортируем список согласно критерию «Regular expressions»
@@ -18,10 +18,10 @@ def main():
 
     #result=list(set(selected_list) & set(full_list)) # Создаст список совпадений.
     #result=list(set(selected_list + full_list)) # Создаст список из уникальных элиментов.
-    result=list(set(selected_list) ^ set(full_list)) # Создаст список элиментов которые соответсвуют критерию сортировки. 
-    delete_list = result
+    result=list(set(selected_list) ^ set(full_list)) # Создаст список элиментов которые не соответствуют критерию сортировки. 
+    delete_list = result # Список элиментов на удаление.
 
-    #print("List of all elements in selected folder - {}".format(all_elements), end='\n\n')
+    print("List of all elements in selected folder - {}".format(all_elements), end='\n\n')
     #print("List which will delete: - {}".format(delete_list),end='\n\n')
     #print("." * 10)
     #print("list which will stay: - {}".format(selected_list))
@@ -32,7 +32,8 @@ def main():
     for file in delete_list: # Перебираеи весь список.
         i = directory + file  # путь + имя файла
         if os.path.isfile(i): # Проверяем является ли элимент файлом.
-            os.remove(i) # Удалем!
+            #os.remove(i) # Удалем!
+            print('Удалили -{}'.format(i)) # Выписываем все элименты       которые бедут удалены.
 
 
 
